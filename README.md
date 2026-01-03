@@ -1,94 +1,195 @@
-# DockFlow
+# DockFlow 🎵⏰
 
-A beautiful Jetpack Compose Android app for landscape "Dock Mode" featuring a music player and digital clock.
+A beautiful, feature-rich Android dock mode app built with Jetpack Compose. Transform your Android device into an elegant bedside clock with universal music controls.
 
-## Features
+![Android](https://img.shields.io/badge/Android-8.0%2B-green)
+![Kotlin](https://img.shields.io/badge/Kotlin-1.9-blue)
+![Compose](https://img.shields.io/badge/Jetpack%20Compose-Latest-brightgreen)
 
-- **Universal Music Control**: Works with any music app (Spotify, YouTube Music, etc.) using Android's MediaSession API
-- **Glassmorphic Design**: Beautiful blurred album art background
-- **Music Player**: 
-  - Album art display with rounded corners
-  - Playback controls (Play/Pause, Next, Previous)
-  - Progress bar with time tracking
-  - Animated audio visualizer
-- **Digital Clock**: Large, modern clock with date display
-- **Theme Switching**: Three beautiful themes (Neon, Minimal, Analog) - long-press the clock to switch
-- **Always On**: Screen stays on while the app is active
-- **Immersive Mode**: Full-screen experience with hidden system bars
+## ✨ Features
 
-## Requirements
+### 🎵 Universal Music Control
+- **Works with any music app** - Spotify, YouTube Music, Apple Music, and more
+- **Smart ad detection** - Automatically mutes Spotify ads
+- **Animated waveform progress bar** - Smooth, flowing wave animation during playback
+- **Tap-to-seek** - Touch anywhere on the waveform to jump to that position
+- **Gradient playback buttons** - Beautiful 3D depth with shadow elevation
+- **Dynamic theming** - Colors extracted from album art using Palette API
 
+### ⏰ Smart Clock Display
+- **12-hour format** with AM/PM indicator
+- **Color harmony** - Clock text blends 90% white + 10% album art accent color
+- **OLED burn-in protection** - Pixel shifting every 5 minutes
+- **Date display** - Full day and date (e.g., "Saturday, January 03")
+
+### 🔋 Battery Indicator
+- **Real-time monitoring** - Instant updates via BroadcastReceiver
+- **Color-coded states:**
+  - 🟢 Green when charging (with pulsing animation)
+  - 🔴 Red when ≤20% battery
+  - 🟠 Orange when 21-50% battery
+  - 🎨 Accent color when >50% battery
+- **Circular progress ring** - Visual battery level indicator
+
+### 🎨 Premium Design
+- **Glassmorphic background** - Blurred album art with dynamic colors
+- **Immersive fullscreen** - Hidden status bar and navigation bar
+- **Landscape orientation** - Optimized for dock mode
+- **Always-on display** - Screen stays on while active
+- **Smooth animations** - 60 FPS animations throughout
+
+## 📱 Screenshots
+
+*Coming soon*
+
+## 🚀 Getting Started
+
+### Requirements
 - Android 8.0 (API 26) or higher
-- Notification Listener permission (required for music control)
+- Android Studio Hedgehog or newer
+- Notification Listener permission
 
-## Setup
+### Installation
 
-1. Open the project in Android Studio
-2. Sync Gradle files
-3. Run the app on your device or emulator
-4. Grant Notification Listener permission when prompted
-5. Play music from any app (Spotify, YouTube Music, etc.)
-6. Enjoy your dock mode!
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/DockFlow.git
+   cd DockFlow
+   ```
 
-## Usage
+2. **Open in Android Studio**
+   - Open Android Studio
+   - Select "Open an Existing Project"
+   - Navigate to the cloned directory
 
-- **Music Controls**: Use the on-screen buttons to control playback
-- **Theme Switching**: Long-press the clock to cycle through themes (Neon → Minimal → Analog)
-- **Landscape Mode**: The app is locked to landscape orientation for optimal dock experience
+3. **Build and Run**
+   - Sync Gradle files
+   - Connect your Android device or start an emulator
+   - Click Run ▶️
 
-## Architecture
+4. **Grant Permissions**
+   - When prompted, grant Notification Listener permission
+   - This allows DockFlow to control music playback
 
-- **Jetpack Compose**: Modern declarative UI
-- **Material3**: Latest Material Design components
-- **MediaSession API**: Universal music control
-- **Kotlin Coroutines & Flow**: Reactive state management
-- **DataStore**: Theme preference persistence
+## 🎮 Usage
 
-## Project Structure
+### Music Controls
+- **Play/Pause** - Tap the center button
+- **Skip tracks** - Use previous/next buttons
+- **Seek** - Tap anywhere on the waveform progress bar
+- **Auto-mute ads** - Spotify ads are automatically detected and muted
+
+### Battery Monitoring
+- Battery percentage and charging status displayed in top-right corner
+- Automatically updates when charger is plugged/unplugged
+
+### Customization
+- Album art colors automatically theme the entire interface
+- Clock color harmonizes with current album art
+
+## 🏗️ Architecture
+
+### Tech Stack
+- **Jetpack Compose** - Modern declarative UI framework
+- **Material3** - Latest Material Design components
+- **Kotlin Coroutines & Flow** - Reactive state management
+- **MediaSession API** - Universal music control across all apps
+- **Palette API** - Dynamic color extraction from album art
+- **DataStore** - Persistent preferences storage
+- **BroadcastReceiver** - Real-time battery monitoring
+
+### Project Structure
 
 ```
-app/
-├── src/main/java/com/dockflow/
-│   ├── MainActivity.kt                    # Main entry point
-│   ├── data/
-│   │   └── model/
-│   │       └── MediaMetadata.kt          # Media data models
-│   ├── service/
-│   │   └── MediaSessionService.kt        # Media session listener
-│   ├── ui/
-│   │   ├── components/
-│   │   │   ├── AudioVisualizer.kt        # Animated visualizer
-│   │   │   ├── ClockSection.kt           # Clock display
-│   │   │   ├── GlassmorphicBackground.kt # Blurred background
-│   │   │   └── MusicPlayerSection.kt     # Music player UI
-│   │   ├── screens/
-│   │   │   ├── DockModeScreen.kt         # Main screen
-│   │   │   └── PermissionScreen.kt       # Permission request
-│   │   └── theme/
-│   │       ├── Color.kt                  # Theme colors
-│   │       ├── Theme.kt                  # Theme definitions
-│   │       ├── ThemeManager.kt           # Theme management
-│   │       └── Type.kt                   # Typography
-│   └── res/                              # Resources
+app/src/main/java/com/dockflow/
+├── MainActivity.kt                      # App entry point, fullscreen setup
+├── data/model/
+│   ├── MediaMetadata.kt                 # Media playback data models
+│   └── PlaybackState.kt                 # Playback state enum
+├── service/
+│   └── MediaSessionService.kt           # MediaSession listener & control
+├── ui/
+│   ├── components/
+│   │   ├── BatteryIndicator.kt          # Real-time battery display
+│   │   ├── ClockSection.kt              # Clock with burn-in protection
+│   │   ├── GlassmorphicBackground.kt    # Blurred album art background
+│   │   ├── MusicPlayerSection.kt        # Music player UI
+│   │   └── WaveformProgressBar.kt       # Animated wavy progress bar
+│   ├── screens/
+│   │   ├── DockModeScreen.kt            # Main dock screen
+│   │   └── PermissionScreen.kt          # Permission request UI
+│   └── theme/
+│       ├── Color.kt                     # Color definitions
+│       ├── Theme.kt                     # Theme configuration
+│       └── Type.kt                      # Typography
+└── util/
+    ├── AdDetector.kt                    # Spotify ad detection & muting
+    └── ColorExtractor.kt                # Palette API color extraction
 ```
 
-## Themes
+## 🎨 Key Features Explained
 
-### Neon Theme (Default)
-- Vibrant cyan and magenta colors
-- Dark background with glowing accents
-- Perfect for nighttime use
+### Animated Waveform Progress Bar
+- Custom implementation using `Canvas` and `Path`
+- Quadratic bezier curves for smooth wave rendering
+- Continuous phase shifting animation when playing
+- Flattens to a line when paused
+- 3dp amplitude, 0.15 frequency for subtle, gentle waves
 
-### Minimal Theme
-- Clean, professional design
-- Light background with subtle colors
-- Great for daytime use
+### Ad Detection & Auto-Mute
+- Pattern matching for common ad keywords
+- Detects "Spotify" as artist name
+- Automatically mutes device volume when ad detected
+- Restores original volume when music resumes
 
-### Analog Theme
-- Warm, vintage aesthetic
-- Brown and beige tones
-- Cozy and nostalgic feel
+### OLED Burn-in Protection
+- Random pixel shifting (-2dp to +2dp) every 5 minutes
+- Prevents static elements from burning into OLED screens
+- Imperceptible to users but effective for screen longevity
 
-## License
+### Dynamic Color Theming
+- Extracts vibrant and dominant colors from album art
+- Applies colors to buttons, progress bar, and UI elements
+- Clock text uses 90% white + 10% accent for subtle harmony
 
-This project is open source and available for personal and commercial use.
+## 🔧 Configuration
+
+### Permissions Required
+```xml
+<uses-permission android:name="android.permission.WAKE_LOCK" />
+<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+```
+
+### Notification Listener
+The app requires Notification Listener access to:
+- Read media session information
+- Control playback across all music apps
+- Extract track metadata (title, artist, album art)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is open source and available under the MIT License.
+
+## 🙏 Acknowledgments
+
+- Inspired by modern music player designs
+- Built with ❤️ using Jetpack Compose
+- Special thanks to the Android developer community
+
+## 📧 Contact
+
+For questions or feedback, please open an issue on GitHub.
+
+---
+
+**Made with ❤️ and Jetpack Compose**

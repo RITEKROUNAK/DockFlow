@@ -104,7 +104,7 @@ fun ClockSection(
  * Get current time in HH:mm format
  */
 private fun getCurrentTime(): String {
-    val formatter = SimpleDateFormat("HH:mm", Locale.getDefault())
+    val formatter = SimpleDateFormat("hh:mm", Locale.getDefault())
     return formatter.format(Date())
 }
 
