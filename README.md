@@ -40,7 +40,13 @@ A beautiful, feature-rich Android dock mode app built with Jetpack Compose. Tran
 
 ## 📱 Screenshots
 
-*Coming soon*
+<p align="center">
+  <img src="screenshots/screenshot1.png" width="45%" alt="DockFlow playing High Rated Gabru">
+  &nbsp;&nbsp;&nbsp;
+  <img src="screenshots/screenshot2.png" width="45%" alt="DockFlow playing Party On My Mind">
+</p>
+
+*DockFlow in action - Beautiful glassmorphic design with dynamic theming based on album art*
 
 ## 🚀 Getting Started
 
