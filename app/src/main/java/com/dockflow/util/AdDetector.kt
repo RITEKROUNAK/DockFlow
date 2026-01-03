@@ -56,6 +56,13 @@ object AdDetector {
                 isMuted = false
                 Log.d(TAG, "Volume restored to: $originalVolume")
                 originalVolume = -1
+            } else if (isMuted) {
+                // If we're muted but don't have original volume, reset flag
+                Log.w(TAG, "Muted state without original volume, resetting")
+                isMuted = false
+                originalVolume = -1
+            } else {
+                Log.d(TAG, "Unmute called but already unmuted (isMuted=$isMuted, originalVolume=$originalVolume)")
             }
         } catch (e: Exception) {
             Log.e(TAG, "Failed to unmute volume", e)
@@ -63,11 +70,12 @@ object AdDetector {
     }
     
     fun handleTrackChange(context: Context, title: String?, artist: String?) {
+        Log.d(TAG, "Track change - Title: '$title', Artist: '$artist', isMuted: $isMuted")
         if (isLikelyAd(title, artist)) {
-            Log.d(TAG, "Ad detected: $title by $artist")
+            Log.d(TAG, "Ad detected: $title by $artist - Muting")
             muteVolume(context)
         } else {
-            Log.d(TAG, "Regular track: $title by $artist")
+            Log.d(TAG, "Regular track: $title by $artist - Unmuting")
             unmuteVolume(context)
         }
     }
