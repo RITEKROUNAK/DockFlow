@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DockFlow</string>
+    <string name="permission_required">Notification Access Required</string>
+    <string name="permission_description">DockFlow needs notification access to control music playback from apps like Spotify and YouTube Music.</string>
+    <string name="grant_permission">Grant Permission</string>
+    <string name="no_music_playing">No music playing</string>
+    <string name="unknown_artist">Unknown Artist</string>
+    <string name="unknown_track">Unknown Track</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+</resources>

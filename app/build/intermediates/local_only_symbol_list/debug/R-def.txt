@@ -1,0 +1,30 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color glass_background
+color glass_border
+color ic_launcher_background
+color neon_accent
+color neon_secondary
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string grant_permission
+string next
+string no_music_playing
+string pause
+string permission_description
+string permission_required
+string play
+string previous
+string unknown_artist
+string unknown_track
+style Theme.DockFlow
+xml backup_rules
+xml data_extraction_rules
